@@ -1,0 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+.App{
+
+  @mixin size($width,$height:$width){
+    width: $width;
+    height: $height;
+  }
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+
+  .twinkle {
+    animation: move-background 100s linear infinite;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png') repeat;
+  }
+  
+  .star-container {
+    background: black url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat;
+  }
+  
+  .twinkle, .star-container {
+    height: 100%;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -9999;
+    pointer-events: none;
+  }
+
+  .forms-container{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Audiowide', cursive;
+
+    .game-mode-container{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+      height: 100%;
+      z-index: 0;
+
+      .box-container{
+        padding-top: 25px;
+        height: 430px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .box {
+        cursor: pointer;
+        position: relative;
+        width: 270px;
+        height: 270px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px;
+        background: #060c21; /* Change */
+        transition: .5s;
+    }
+  
+    .create{
+      width: 300px;
+      height: 300px;
+      margin-top: 30vh;
+    }
+
+    form{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content:space-around;
+      align-items: center;
+      width: 270px;
+      height: 270px;
+      background: #060c21;
+      color: #fff;
+      font-weight: bold;
+
+      input{
+        position: relative;
+        background: transparent;
+        border: 0;
+        box-sizing: border-box;
+        color: white;
+        font-size: 16px;
+        outline: none !important;
+        border-bottom: 1px solid #03e9f4;
+      }
+
+
+      @keyframes input-anim {
+        0% {
+          left: -100%;
+        }
+        50%,100% {
+          left: 100%;
+        }
+      }
+
+      input::placeholder{
+        color:#03e9f4;
+        opacity: 0.2;
+        text-transform: uppercase;
+      }
+
+      button {
+        position: relative;
+        cursor: pointer;
+        padding: 10px 20px;
+        background: transparent;
+        color: #03e9f4;
+        font-size: 16px;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        border: none;
+        letter-spacing: 4px;
+
+        span{
+          position: absolute;
+          display: block;
+        }
+
+        span:nth-child(1) {
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, #03e9f4);
+          animation: btn-anim1 1s linear infinite;
+        }
+        
+        @keyframes btn-anim1 {
+          0% {
+            left: -100%;
+          }
+          50%,100% {
+            left: 100%;
+          }
+        }
+        
+        span:nth-child(2) {
+          top: -100%;
+          right: 0;
+          width: 2px;
+          height: 100%;
+          background: linear-gradient(180deg, transparent, #03e9f4);
+          animation: btn-anim2 1s linear infinite;
+          animation-delay: .25s
+        }
+        
+        @keyframes btn-anim2 {
+          0% {
+            top: -100%;
+          }
+          50%,100% {
+            top: 100%;
+          }
+        }
+
+        span:nth-child(3) {
+          bottom: 0;
+          right: -100%;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(270deg, transparent, #03e9f4);
+          animation: btn-anim3 1s linear infinite;
+          animation-delay: .5s
+        }
+        
+        @keyframes btn-anim3 {
+          0% {
+            right: -100%;
+          }
+          50%,100% {
+            right: 100%;
+          }
+        }
+
+        span:nth-child(4) {
+          bottom: -100%;
+          left: 0;
+          width: 2px;
+          height: 100%;
+          background: linear-gradient(360deg, transparent, #03e9f4);
+          animation: btn-anim4 1s linear infinite;
+          animation-delay: .75s
+        }
+        
+        @keyframes btn-anim4 {
+          0% {
+            bottom: -100%;
+          }
+          50%,100% {
+            bottom: 100%;
+          }
+        }
+        
+      }
+
+      button:hover {
+        background: #03e9f4;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #03e9f4,
+                    0 0 25px #03e9f4,
+                    0 0 50px #03e9f4,
+                    0 0 100px #03e9f4;
+      }
+    }
+
+    form::before{
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: #fff;
+      z-index: -1;
+      background: linear-gradient(235deg, #2196f3, #010615, #772aff);
+    }
+
+    form::after{
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: #fff;
+      z-index: -2;
+      filter: blur(40px);
+      background: linear-gradient(235deg, #2196f3, #010615, #772aff);
+    }
+
+
+      .box:hover {
+        height: 350px;
+    }
+    
+    .box .imgBx {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    
+    .box .imgBx img {
+        width: 100%;
+        opacity: .3;
+        transition: .5s; 
+    }
+    
+    .box:hover .imgBx img {
+        opacity: 1;  
+    }
+    
+    .box:before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: #fff;
+        z-index: -1;
+        
+    }
+    
+    .box:after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: #fff;
+        z-index: -2;
+        filter: blur(40px);
+        
+    }
+    
+    .box:before,
+    .box:after   {  
+        background: linear-gradient(235deg, #2196f3, #010615, #F00000);
+    }
+    
+    .box:nth-child(2):before,
+    .box:nth-child(2):after   { /* not supported 😣 */
+        background: linear-gradient(235deg, #2196f3, #010615, #F00000);
+    }
+    
+    .box:nth-child(3):before,
+    .box:nth-child(3):after   { /* not supported 😣 */
+        background: linear-gradient(235deg, #772aff, #010615, #2196f3);
+    }
+    
+    .box .content {
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        height: 90px;
+        background: rgba(0,0,0,.04);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    
+    .box:hover .content {
+        opacity: 1;
+    }
+    
+    .box .content h2 {
+        font-size: 20px;
+        color: #fff;
+        font-weight: 500; /* just one style 😐 */
+        line-height: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    
+    .box .content h2 span {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 200; /* just one style 😐 */
+        
+        letter-spacing: 2px;
+    }
+
+    }
+
+
+  }
+
+  .container{
+
+    width: 100%;
+    height: 100%;
+
+    .intro{
+      @include size(500px,200px);
+      position: relative;
+      top: 50vh;
+      margin: -100px auto 0 auto;
+      font-size: 200%;
+      font-weight: 400;
+      color: rgb(75, 213, 238);
+      opacity: 0;
+      animation: intro 4s ease-out 1s;
+    }
+  
+    .logo{
+      overflow: hidden;
+      @include size(700px,420px);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -210px 0 0 -350px;
+      opacity: 0;
+      animation: logo 8s linear 5s;
+      svg{
+        width: inherit;
+        margin: 0 auto;
+      }
+    }
+  
+    .prologue{
+      letter-spacing: .15em;
+      color: #ff6;
+      @include size(1000px,3000px);
+      position: absolute;
+      top: auto;
+      left: 50%;
+      bottom: 0;
+      margin-left: -500px;
+      text-align: justify;
+      font-size: 4.5em;
+      overflow: hidden;
+      transform-origin: 50% 100%;
+      transform: perspective(700px) rotateX(30deg) ;
+      .text{
+        position: absolute;
+        top: 100%;
+        animation: prologue 30s linear 8s;
+        p{
+          margin: 1.35em 0 1.85em 0;
+          line-height: 1.35em;
+          backface-visibility: hidden;
+        }
+      }
+    }
+  
+    @keyframes intro {
+  
+      0%{
+        opacity: 0;
+      }
+      20%{
+        opacity: 1;
+      }
+      90%{
+        opacity: 1;
+      }
+      100%{
+        opacity: 1;
+      }
+  
+    }
+  }
+  
+  
+  
+@keyframes logo{
+  0%{
+    transform: scale(2.7);
+    opacity: 1;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    transform: scale(.1);
+  }
+}
+
+@keyframes prologue{
+  0%{
+    top: 100%;
+    opacity: 1;
+  }
+  95%{
+    opacity: 1;
+  }
+  100%{
+    top: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes thanks{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes move-background {
+  from {
+    left: -1000px
+  }
+
+  to {
+    left: 1000px;
+  }
+}
+
+}
+

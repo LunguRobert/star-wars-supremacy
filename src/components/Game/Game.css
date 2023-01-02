@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.game-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  z-index: 1;
+}
+.game-container .announcer {
+  font-family: "Audiowide", cursive;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: bold;
+  z-index: 99999;
+}
+.game-container .trash-container {
+  position: absolute;
+  left: 25%;
+  top: 10%;
+  width: 50%;
+  height: 50%;
+  background: rgba(74, 115, 117, 0.4901960784);
+  z-index: 2;
+  display: grid;
+  grid-gap: 80px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  overflow: scroll;
+  display: none;
+}
+.game-container .trash-container button {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  color: #D3FFEC;
+  font-weight: bold;
+  padding: 2px;
+}
+.game-container .trash-container::-webkit-scrollbar {
+  width: 10px;
+}
+.game-container .trash-container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.game-container .trash-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.game-container .trash-container img {
+  position: relative;
+  margin: 5px;
+  width: 17%;
+  height: 50%;
+}
+.game-container #canvas {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+}
+.game-container h1 {
+  position: absolute;
+  left: 60%;
+  bottom: 0%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  font-size: 50px;
+  color: rgb(255, 0, 157);
+  opacity: 0;
+  -webkit-animation-name: notice;
+          animation-name: notice;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+.game-container .card-info {
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 350px;
+}
+.game-container .card-info img[src=""], .game-container .card-info img[src=null] {
+  display: none;
+}
+.game-container .card-info #card {
+  position: relative;
+  height: 50%;
+}
+.game-container .card-info #card img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.game-container .card-info p {
+  margin-top: 20px;
+  font-family: "Audiowide", cursive;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+.game-container .board-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  perspective: 150px;
+  overflow: hidden;
+}
+.game-container .board-container .my-stats {
+  width: 250px;
+  position: absolute;
+  left: 2vw;
+  top: 0;
+}
+.game-container .board-container .enemy-stats {
+  z-index: 1900;
+  position: absolute;
+  text-align: center;
+  min-width: 250px;
+  right: 2vw;
+  top: 0;
+  cursor: pointer;
+  color: #fff;
+}
+.game-container .board-container .my-stats, .game-container .board-container .enemy-stats {
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+}
+.game-container .board-container .my-stats .health, .game-container .board-container .my-stats .mana, .game-container .board-container .enemy-stats .health, .game-container .board-container .enemy-stats .mana {
+  position: relative;
+  z-index: 0;
+  margin: 5px;
+}
+.game-container .board-container .my-stats .health span, .game-container .board-container .my-stats .mana span, .game-container .board-container .enemy-stats .health span, .game-container .board-container .enemy-stats .mana span {
+  border-radius: 15px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.game-container .board-container .my-stats .health span:before, .game-container .board-container .my-stats .mana span:before, .game-container .board-container .enemy-stats .health span:before, .game-container .board-container .enemy-stats .mana span:before {
+  content: "";
+  border-radius: 15px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(https://data.whicdn.com/images/332464448/original.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: overlay;
+  z-index: 0;
+  box-shadow: 1px 1px 0 rgba(76, 230, 225, 0.4274509804), 0 0 20px 5px rgba(192, 255, 228, 0.2901960784), inset 2px 2px 0 #D3FFEC;
+}
+.game-container .board-container .my-stats .health span, .game-container .board-container .enemy-stats .health span {
+  background: #ff4c2c;
+  width: 50%;
+  height: 100%;
+}
+.game-container .board-container .my-stats .mana span, .game-container .board-container .enemy-stats .mana span {
+  background: #4a7375;
+  width: 10%;
+  height: 100%;
+}
+.game-container .board-container .my-stats .health h3, .game-container .board-container .enemy-stats .health h3 {
+  border-radius: 15px;
+  background-color: rgba(255, 76, 44, 0.4941176471);
+}
+.game-container .board-container .my-stats .mana h3, .game-container .board-container .enemy-stats .mana h3 {
+  border-radius: 15px;
+  background-color: rgba(74, 115, 117, 0.4901960784);
+}
+.game-container .board-container .board {
+  transform: rotateX(6deg) rotateY(0deg);
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.game-container .board-container .board .enemy-container, .game-container .board-container .board .my-container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40%;
+  width: 70%;
+  border: 2px rgba(121, 121, 121, 0.507) solid;
+}
+.game-container .board-container .board .enemy-container::after, .game-container .board-container .board .my-container::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  border: 2px white solid;
+  border-top: none;
+  filter: blur(5px);
+  z-index: -1;
+}
+.game-container .board-container .board .enemy-container {
+  transform: rotate(180deg);
+  background: rgba(85, 85, 85, 0.3);
+  border-top: none;
+}
+.game-container .board-container .board .my-container {
+  background: rgba(85, 85, 85, 0.3);
+  z-index: -100;
+  border-top: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    background: none;
+  }
+  50% {
+    background: white;
+  }
+  100% {
+    background: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background: none;
+  }
+  50% {
+    background: white;
+  }
+  100% {
+    background: none;
+  }
+}
+@-webkit-keyframes notice {
+  from {
+    opacity: 0;
+    bottom: 0;
+  }
+  to {
+    opacity: 1;
+    bottom: 50%;
+  }
+}
+@keyframes notice {
+  from {
+    opacity: 0;
+    bottom: 0;
+  }
+  to {
+    opacity: 1;
+    bottom: 50%;
+  }
+}/*# sourceMappingURL=Game.css.map */

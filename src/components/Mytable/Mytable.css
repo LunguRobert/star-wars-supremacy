@@ -1,0 +1,482 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+.my-card-container {
+  height: 100%;
+  width: 100%;
+}
+.my-card-container .btn {
+  position: absolute;
+  left: 4vw;
+  top: 25px;
+  height: 15vh;
+  width: 15vh;
+}
+.my-card-container .btn a {
+  font-family: "Audiowide", cursive;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  z-index: 1;
+  transition: 0.5s;
+}
+.my-card-container .btn:hover a {
+  letter-spacing: 2px;
+}
+.my-card-container .btn a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+.my-card-container .btn:hover a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+.my-card-container .btn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  height: 80px;
+  width: 40px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+.my-card-container .btn:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+.my-card-container .btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  height: 80px;
+  width: 40px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+.my-card-container .btn:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+.my-card-container .my-card-table {
+  padding-top: 10px;
+  position: relative;
+  display: grid;
+  height: 100%;
+  gap: 5px 15px;
+  width: 100%;
+  justify-content: center;
+  align-content: flex-start;
+  grid-template-columns: repeat(6, 6vw);
+}
+.my-card-container .card {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-card-container .card .sword {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  height: 50%;
+  width: 50%;
+  z-index: 1;
+}
+.my-card-container .card .attack, .my-card-container .card .defence {
+  position: absolute;
+  font-size: 1.9vmin;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 2.5px 10px;
+  background: #1e2328;
+  color: #cdbe91;
+  box-shadow: inset 0 0 2px #000000;
+  -o-border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
+     border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
+  border-image-slice: 1;
+  border-width: 2px;
+  z-index: 100;
+}
+.my-card-container .card .attack:hover, .my-card-container .card .defence:hover {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5019607843);
+  box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.3137254902);
+  background: linear-gradient(to bottom, #1e2328, #433d2b);
+  cursor: pointer;
+  transition: 0.1s;
+}
+.my-card-container .card .attack:active, .my-card-container .card .defence:active {
+  text-shadow: none;
+  box-shadow: none;
+  color: rgba(205, 190, 145, 0.1882352941);
+}
+.my-card-container .card .attack {
+  top: 25%;
+}
+.my-card-container .card .defence {
+  bottom: 25%;
+}
+.my-card-container .card .fight-card {
+  position: relative;
+  transform: rotate(0deg);
+  width: 90%;
+  height: 90%;
+  z-index: 1;
+  transition: ease 2s;
+  opacity: 1;
+}
+.my-card-container .card .special-card {
+  position: relative;
+  transform: rotate(0deg);
+  width: 90%;
+  height: 90%;
+  z-index: 1;
+  opacity: 1;
+}
+.my-card-container .card .pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(60, 125, 150, 0.48);
+  opacity: 0.8;
+  -webkit-animation: pulseAnimation 4s ease-out infinite;
+          animation: pulseAnimation 4s ease-out infinite;
+  visibility: visible;
+}
+.my-card-container .card #a {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+.my-card-container .card #b {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.my-card-container .card #c {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.my-card-container .card #d {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.my-card-container .card span {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  z-index: 9;
+  text-align: center;
+  font-size: calc(0.4em + 1vmin);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+.my-card-container .card span b {
+  -webkit-animation-name: stats;
+          animation-name: stats;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+.my-card-container .card .shield {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  height: 50%;
+  width: 50%;
+}
+.my-card-container .card img[name=""] {
+  opacity: 0;
+  pointer-events: none;
+}
+.my-card-container .card img[name=special] {
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  filter: saturate(0.5) hue-rotate(240deg);
+  pointer-events: none;
+}
+.my-card-container .card img[src=""] {
+  display: none;
+}
+.my-card-container .extra-space {
+  position: absolute;
+  top: 25px;
+  right: 4vw;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(1, calc(5vw + 10px));
+}
+.my-card-container .extra-space .deck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.my-card-container .extra-space .deck img {
+  width: 95%;
+  height: 95%;
+}
+.my-card-container .extra-space .deck .cards-counter {
+  color: #FFCE44;
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+}
+.my-card-container .deck, .my-card-container .trash {
+  position: relative;
+  aspect-ratio: 1/1.1;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.my-card-container .trash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-card-container .trash img {
+  pointer-events: none;
+  width: 95%;
+  height: 95%;
+}
+.my-card-container .trash img[src=""] {
+  display: none;
+}
+.my-card-container .hold {
+  border: solid rgb(163, 11, 11) 4px;
+}
+.my-card-container #hovered {
+  background: #f4f4f4;
+  border-style: dashed;
+}
+.my-card-container .invisible {
+  display: none;
+}
+
+.my-hand-container {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 25vh;
+  width: 100%;
+  perspective: 200px;
+}
+.my-hand-container .my-cards {
+  position: relative;
+  transform: rotateX(-10deg) rotateY(0deg);
+  transform-style: preserve-3d;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-hand-container .my-cards .hand {
+  position: relative;
+  height: 130px;
+  width: 120px;
+  z-index: 0;
+  transform: translateY(45px);
+  transition: all 1s;
+  margin-left: 10px;
+  border-radius: 2px;
+  box-shadow: 0 0 1px 1px rgba(38, 230, 247, 0.6), 0 0 1px 2px rgba(247, 89, 228, 0.6), 0 0 6px 2px rgba(255, 231, 89, 0.6), 0 30px 20px -10px rgba(0, 0, 0, 0.5);
+}
+.my-hand-container .my-cards .hand:hover, .my-hand-container .my-cards .hand:active, .my-hand-container .my-cards .hand:focus {
+  transform: translateY(10px);
+}
+.my-hand-container .my-cards .hand img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.my-hand-container .my-cards .hand:before, .my-hand-container .my-cards .hand:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-image: linear-gradient(115deg, transparent 0%, rgb(0, 231, 255) 30%, rgb(255, 0, 231) 70%, transparent 100%);
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  background-size: 300% 300%;
+  mix-blend-mode: color-dodge;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+}
+.my-hand-container .my-cards .hand:after {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif");
+  background-position: center;
+  background-size: 160%;
+  background-blend-mode: overlay;
+  z-index: 2;
+  filter: brightness(1) contrast(1);
+  transition: all 0.33s ease;
+  mix-blend-mode: color-dodge;
+  opacity: 0.75;
+}
+.my-hand-container .my-cards .hand span {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  -webkit-animation: none;
+          animation: none;
+  transition: none;
+  background-image: linear-gradient(115deg, transparent 0%, transparent 25%, rgba(0, 231, 255, 0.7) 45%, rgba(255, 0, 231, 0.7) 55%, transparent 70%, transparent 100%);
+  background-position: 0% 0%;
+  mix-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: 300% 300%;
+}
+.my-hand-container .my-cards .hand .active {
+  background-position: 0% 0%;
+}
+
+@-webkit-keyframes stats {
+  from {
+    color: red;
+    transform: scale(1.2);
+  }
+  to {
+    color: white;
+    transform: scale(1);
+  }
+}
+
+@keyframes stats {
+  from {
+    color: red;
+    transform: scale(1.2);
+  }
+  to {
+    color: white;
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+@-webkit-keyframes pulseAnimation {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}/*# sourceMappingURL=Mytable.css.map */

@@ -1,0 +1,288 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.game-container{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    z-index: 1;
+
+    .announcer{
+        font-family: 'Audiowide', cursive;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        font-size: 60px;
+        font-weight: bold;
+        z-index: 99999;
+    }
+
+    .trash-container{
+        position: absolute;
+        left: 25%;
+        top: 10%;
+        width: 50%;
+        height: 50%;
+        background: #4a73757d;
+        z-index: 2;
+        display: grid;
+        grid-gap: 80px;
+        grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+        overflow: scroll;
+        display: none;
+
+        button{
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: transparent;
+            color: #D3FFEC;
+            font-weight: bold;
+            padding: 2px;
+        }
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+
+        &::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+        
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+
+        img{
+            position: relative;
+            margin: 5px;
+            width: 17%;
+            height: 50%;
+        }
+    }
+
+    #canvas {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    h1{
+        position: absolute;
+        left: 60%;
+        bottom: 0%;
+        transform: translate(-50%,-50%);
+        z-index: 10000;
+        font-size: 50px;
+        color: rgb(255, 0, 157);
+        opacity: 0;
+        animation-name: notice;
+        animation-duration: 3s;
+    }
+
+    .card-info{
+        pointer-events:none;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 350px;
+        img[src=""],img[src='null'] {
+            display: none;
+         }
+
+        #card{
+            position: relative;
+            height: 50%;
+
+            img{
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+
+        p{
+            margin-top: 20px;
+            font-family: 'Audiowide', cursive;
+            position: relative;
+            color: white;
+            text-align: center;
+
+        }
+    }
+
+    .board-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        perspective: 150px;
+        overflow: hidden;
+
+        .my-stats{
+            width: 250px;
+            position: absolute;
+            left: 2vw;
+            top: 0;
+        }
+
+        .enemy-stats{
+            z-index: 1900;
+            position: absolute;
+            text-align: center;
+            min-width: 250px;
+            right: 2vw;
+            top: 0;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .my-stats, .enemy-stats{
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+            
+            .health, .mana{
+                position: relative;
+                z-index: 0;
+                margin: 5px;
+
+                span{
+                    border-radius: 15px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: -1;
+                }
+
+                span:before{
+                    content: '';
+                    border-radius: 15px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: url(https://data.whicdn.com/images/332464448/original.gif);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    mix-blend-mode: overlay;
+                    z-index: 0;
+                    box-shadow: 1px 1px 0 #4ce6e16d, 0 0 20px 5px #c0ffe44a, inset 2px 2px 0 #D3FFEC;
+                }
+            }
+
+            .health span{
+                background: #ff4c2c;
+                width: 50%;
+                height: 100%;   
+            }
+            .mana span{
+                background: #4a7375;
+                width: 10%;
+                height: 100%;   
+            }
+
+            .health h3{
+                border-radius: 15px;
+                background-color: #ff4c2c7e;
+            }
+
+            .mana h3{
+                border-radius: 15px;
+                background-color: #4a73757d;
+            }
+        }
+
+        
+        .board{
+            
+            transform: rotateX(6deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            .enemy-container, .my-container{
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                height: 40%;
+                width: 70%;
+                border: 2px rgba(121, 121, 121, 0.507) solid;
+                
+            }
+
+            .enemy-container::after, .my-container::after{
+                content: '';
+                position: absolute;
+                top: -4px;
+                bottom: -4px;
+                left: -4px;
+                right: -4px;
+                border: 2px white solid;
+                border-top: none ;
+                filter: blur(5px);
+                z-index: -1;
+            }
+    
+            .enemy-container{
+                transform: rotate(180deg);
+                background: rgba(85, 85, 85, 0.3);
+                border-top: none;  
+            }
+    
+            .my-container{
+                background: rgba(85, 85, 85, 0.3);
+                z-index: -100;
+                border-top: none ;
+            }
+        }
+
+    }
+
+    
+}
+
+@keyframes pulse {
+    0%{
+        background: none;
+    }
+    50%{
+        background: white;
+    }
+    100%{
+        background: none;
+    }
+}
+
+@keyframes notice {
+    from{
+        opacity: 0;
+        bottom: 0;
+    }
+    to{
+        opacity: 1;
+        bottom: 50%;
+    }
+}
