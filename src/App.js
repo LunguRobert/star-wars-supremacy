@@ -11,26 +11,8 @@ import {
   useParams
 } from "react-router-dom";
 
-import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js'
 
 function App({client}) {
-
-  useEffect(()=>{
-    
-    neonCursor({
-      el: document.getElementById('app'),
-      shaderPoints: 16,
-      curvePoints: 25,
-      curveLerp: 0.5,
-      radius1: 3,
-      radius2: 1,
-      velocityTreshold: 10,
-      sleepRadiusX: 1000,
-      sleepRadiusY: 1000,
-      sleepTimeCoefX: 0.0025,
-      sleepTimeCoefY: 0.0025
-    })
-  },[])
 
   return (
     <div id='app' className="App">

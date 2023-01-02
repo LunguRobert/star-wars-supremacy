@@ -1,9 +1,0 @@
-#app canvas{
-    display: block;
-    position: fixed;
-    top: 0;
-    opacity: 1;
-    mix-blend-mode: screen;
-    pointer-events: none;
-    z-index: 100000;
-}
