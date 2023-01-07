@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 import { w3cwebsocket } from 'websocket';
 
-const client = new w3cwebsocket('wss://star-wars-supremacy-server.onrender.com:10000')
+const client = new w3cwebsocket('wss://star-wars-supremacy-server.onrender.com')
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
