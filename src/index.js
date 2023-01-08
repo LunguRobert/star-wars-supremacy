@@ -10,7 +10,7 @@ const client = new w3cwebsocket('wss://star-wars-supremacy-server.onrender.com')
 console.log(client.readyState);
 function stayAwake(){
     if (socket.readyState === 1) {
-        client.send('wake');
+        client.send(JSON.stringify({type: 'stay_awake'}));
     }
 }
 
