@@ -7,9 +7,11 @@ import {
 import { w3cwebsocket } from 'websocket';
 
 const client = new w3cwebsocket('wss://star-wars-supremacy-server.onrender.com')
-
+console.log(client.readyState);
 function stayAwake(){
-    client.send('wake');
+    if (socket.readyState === 1) {
+        client.send('wake');
+    }
 }
 
 setTimeout(stayAwake,20000);
