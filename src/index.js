@@ -11,6 +11,7 @@ console.log(client.readyState);
 function stayAwake(){
     if (client.readyState === 1) {
         client.send(JSON.stringify({type: 'stay_awake'}));
+        console.log('stay awake')
     }
 }
 
