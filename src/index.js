@@ -15,7 +15,7 @@ function stayAwake(){
     }
 }
 
-setTimeout(stayAwake,20000);
+setInterval(stayAwake,20000);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
