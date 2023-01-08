@@ -8,6 +8,12 @@ import { w3cwebsocket } from 'websocket';
 
 const client = new w3cwebsocket('wss://star-wars-supremacy-server.onrender.com')
 
+function stayAwake(){
+    client.send('wake');
+}
+
+setTimeout(stayAwake,20000);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
