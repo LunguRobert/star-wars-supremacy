@@ -19,6 +19,12 @@ function Room({client}) {
 
   const navigate = useNavigate();
 
+  function stayAwake(){
+    console.log(client.readyState);
+    client.send(JSON.stringify({type: 'stay_awake'}));
+    console.log('stay awake')
+  }
+
   useEffect(()=>{
 
     setTimeout(()=>{
@@ -28,8 +34,12 @@ function Room({client}) {
     },38000)
 
     client.onopen = () => {
-      console.log("WebSocket Client Connected")
+      console.log("WebSocket Client Connected");
+      setInterval(stayAwake, 20000);
+      stayAwake();
     }
+
+    
     client.onmessage = (message) => {
       const dataFromServer = JSON.parse(message.data);
           if(dataFromServer.type==='data'){
