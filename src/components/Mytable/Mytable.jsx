@@ -909,16 +909,18 @@ export default function Mytable(props) {
     useEffect(()=>{
         const filteredArray = enemyForceCard.filter(value => value !== "");
         if(attacker && filteredArray.length === 0){
-            const diference = attacker.fightCard.attack;
-            const newEnemyHp = enemyHp - diference;
-            changeCards[attacker.position-1]({...attacker.fightCard,timesAttacked:attacker.fightCard.timesAttacked+1});
-            setTimeout(()=>{
-                client.send(JSON.stringify({type: 'talk_to_attacker',adress:props.enemyId,card:'',position:'rey',diference:newEnemyHp}));
-                client.send(JSON.stringify({type: 'will_attack',adress:props.enemyId,position:''}));
-                setEnemyHp(enemyHp-diference);
-                setAttacker('');
-                props.setAttackPrepare(false);
-            },2000)
+            if(attacker.name !== 'dooku'){
+                const diference = attacker.fightCard.attack;
+                const newEnemyHp = enemyHp - diference;
+                changeCards[attacker.position-1]({...attacker.fightCard,timesAttacked:attacker.fightCard.timesAttacked+1});
+                setTimeout(()=>{
+                    client.send(JSON.stringify({type: 'talk_to_attacker',adress:props.enemyId,card:'',position:'rey',diference:newEnemyHp}));
+                    client.send(JSON.stringify({type: 'will_attack',adress:props.enemyId,position:''}));
+                    setEnemyHp(enemyHp-diference);
+                    setAttacker('');
+                    props.setAttackPrepare(false);
+                },2000)
+            }
         }
         if(attacker){
             if(attacker.fightCard.name === 'rey'){

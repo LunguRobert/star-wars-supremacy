@@ -14,6 +14,8 @@ export default function Game({client}) {
   const whoIsJedi = useRef(false);
   const isMyFirstTurn = useRef(false);
   const allDataRequired = useRef(true);
+  const prevMana = useRef(5);
+
   const [myUserName,setMyUserName] = useState('');
   const [enemyUserName,setEnemyUserName] = useState('');
   const [gameFinished,setGameFinished] = useState(false);
@@ -277,8 +279,12 @@ export default function Game({client}) {
   },[])
 
   function increaseMana(){
-    if(myMana<9)
-    setMyMana(myMana+1);
+    if(myMana<9){
+      if(prevMana.current<9){
+        prevMana.current += 1;
+      }
+      setMyMana(prevMana.current);
+    }
   }
 
   useEffect(()=>{
