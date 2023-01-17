@@ -1,231 +1,226 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
-.enemy-card-container{
+.enemy-card-container {
   position: relative;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    
-    .btn{
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .btn {
+    position: absolute;
+    right: 4vw;
+    top: 25px;
+    height: 15vh;
+    width: 15vh;
+
+    a {
+      font-family: "Audiowide", cursive;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+      color: #fff;
+      display: flex;
+      font-size: 16px;
+      font-weight: 700;
+      left: 0;
+      top: 0;
       position: absolute;
-      right: 4vw;
-      top: 25px;
-      height: 15vh;
-      width: 15vh;
-      
-      a {
-        font-family: 'Audiowide', cursive;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.05);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 30px;
-        box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
-        color: #fff;
-        display: flex;
-        font-size: 16px;
-        font-weight: 700;
-        left: 0;
-        top: 0;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        justify-content: center;
-        letter-spacing: 1px;
-        text-decoration: none;
-        overflow: hidden;
-        -webkit-backdrop-filter: blur(10px);  
-        backdrop-filter: blur(15px);
-        z-index: 1;
-        transition: 0.5s;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      letter-spacing: 1px;
+      text-decoration: none;
+      overflow: hidden;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
+      z-index: 1;
+      transition: 0.5s;
     }
 
     & a::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 50%;
       height: 100%;
-      background: linear-gradient(to left,
-                  rgba(255,255,255,0.15),
-                  transparent);
+      background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
       transform: skewX(45deg) translateX(0);
       transition: 0.5s;
     }
-  
-  
-      &::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -5px;
-        height:80px;
-        width: 40px; 
-        border-radius: 10px;
-        transition: 0.5s;
-        transition-delay: 0s;
-    }
-  
-  
-      &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -5px;
-        height: 80px;
-        width: 40px;
-        border-radius: 10px;
-        transition: 0.5s;
-        transition-delay: 0s;
-    }
 
-}
-
-    .enemy-card-table {
-      padding-top: 10px;
-      position: relative;
-      display: grid;
-      height: 100%;
-      gap: 5px 15px;
-      width: 100%;
-      justify-content: center;
-      align-content:flex-start;
-      grid-template-columns:repeat(6,6vw);
-
-      
-      }
-      
-      .card{
-        position: relative;
-        background-color: rgba(0, 0, 0, 0.3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        span{
-          position: absolute;
-          transform: rotate(180deg);
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 20%;
-          z-index: 10;
-          text-align: center;
-          font-size: calc(0.4em + 1vmin);
-          color:rgb(255, 255, 255);
-          font-weight: bold;
-        }
-
-          .fight-card{
-          position: relative;
-          transform: rotate(0deg);
-          width: 90%;
-          height: 90%;
-          transition: ease 2s;
-          opacity: 1;
-
-        }
-
-        .special-card{
-          position: relative;
-          transform: rotate(0deg);
-          width: 90%;
-          height: 90%;
-          z-index: 1;
-          opacity: 1;
-        }
-
-        .pulse {
-          position: absolute;
-          z-index: -1;
-          width: 100%;
-          height: 100%;
-          background: rgba(60, 125, 150, 0.48);
-          opacity: 0.8;
-          animation: pulseAnimation 4s ease-out infinite;
-          visibility:visible;
-        }
-  
-        #a{
-          animation-delay: 0s;
-        }
-        #b{
-          animation-delay: 1s;
-        }
-        #c{
-          animation-delay: 2s;
-        }
-        #d{
-          animation-delay: 3s;
-        }
-
-        #darthmaul{
-          pointer-events: none;
-        }
-
-        .sword{
-          cursor: pointer;
-          transform: rotate(180deg);
-          position: absolute;
-          top: 25%;
-          left: 25%;
-          height: 50%;
-          width: 50%;
-        }
-
-        img[name=""] {
-          opacity: 0;
-          pointer-events: none;
-        }
-        img[name='special']{
-          filter: saturate(0.5) hue-rotate(240deg);
-          opacity: 0.2;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-       }
-      }
-
-
-    .extra-space{
+    &::before {
+      content: "";
       position: absolute;
-      top: 25px;
-      left: 4vw;
-      display: grid;
-      gap: 5px;
-      grid-template-columns:repeat(1, calc(5vw + 10px));
-      
-      .deck, .trash{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        aspect-ratio: 1/1.1;
-        background-color: rgba(0, 0, 0, 0.3);
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -5px;
+      height: 80px;
+      width: 40px;
+      border-radius: 10px;
+      transition: 0.5s;
+      transition-delay: 0s;
+    }
 
-        img{
-          width: 95%;
-          height: 95%;
-        }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -5px;
+      height: 80px;
+      width: 40px;
+      border-radius: 10px;
+      transition: 0.5s;
+      transition-delay: 0s;
+    }
+  }
 
-        img[src=""] {
-          display: none;
-        }
+  .enemy-card-table {
+    padding-top: 10px;
+    position: relative;
+    display: grid;
+    height: 100%;
+    gap: 5px 15px;
+    width: 100%;
+    justify-content: center;
+    align-content: flex-start;
+    grid-template-columns: repeat(6, 6vw);
+  }
+
+  .card {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      position: absolute;
+      transform: rotate(180deg);
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 20%;
+      z-index: 10;
+      text-align: center;
+      font-size: calc(0.4em + 1vmin);
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+    }
+
+    .fight-card {
+      position: relative;
+      transform: rotate(0deg);
+      width: 90%;
+      height: 90%;
+      transition: ease 2s;
+      opacity: 1;
+    }
+
+    .special-card {
+      position: relative;
+      transform: rotate(0deg);
+      width: 90%;
+      height: 90%;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .pulse {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: rgba(60, 125, 150, 0.48);
+      opacity: 0.8;
+      animation: pulseAnimation 4s ease-out infinite;
+      visibility: visible;
+    }
+
+    #a {
+      animation-delay: 0s;
+    }
+    #b {
+      animation-delay: 1s;
+    }
+    #c {
+      animation-delay: 2s;
+    }
+    #d {
+      animation-delay: 3s;
+    }
+
+    #darthmaul {
+      pointer-events: none;
+    }
+
+    .sword {
+      cursor: pointer;
+      transform: rotate(180deg);
+      position: absolute;
+      top: 25%;
+      left: 25%;
+      height: 50%;
+      width: 50%;
+    }
+
+    img[name=""] {
+      opacity: 0;
+      pointer-events: none;
+    }
+    img[name="special"] {
+      filter: saturate(0.5) hue-rotate(240deg);
+      opacity: 0.2;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  }
+
+  .extra-space {
+    position: absolute;
+    top: 25px;
+    left: 4vw;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(1, calc(5vw + 10px));
+
+    .deck,
+    .trash {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 1/1.1;
+      background-color: rgba(0, 0, 0, 0.3);
+
+      img {
+        width: 95%;
+        height: 95%;
+      }
+
+      img[src=""] {
+        display: none;
       }
     }
-    
+  }
 }
 
-.enemy-hand-container{
+.enemy-hand-container {
   position: absolute;
   z-index: 10;
   left: 0;
   bottom: -3vh;
   width: 100%;
   perspective: 200px;
-  .enemy-cards{
+  .enemy-cards {
     transform: rotateX(10deg) rotateY(0deg);
     transform-style: preserve-3d;
     width: 100%;
@@ -233,7 +228,7 @@
     align-items: center;
     justify-content: center;
 
-    .hand{
+    .hand {
       z-index: 12;
       height: 140px;
       width: 130px;
@@ -241,7 +236,7 @@
       transform: translateY(60px);
       transition: all 1s;
       margin-left: 10px;
-      img{
+      img {
         width: 100%;
         height: 100%;
         background-size: cover;
@@ -250,25 +245,45 @@
         transform: rotate(180deg);
       }
 
-      img[src='']{
+      img[src=""] {
         display: none;
       }
     }
-
   }
 }
 
-
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }

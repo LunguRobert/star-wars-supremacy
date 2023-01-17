@@ -8,13 +8,16 @@
 }
 .App .twinkle {
   -webkit-animation: move-background 100s linear infinite;
-          animation: move-background 100s linear infinite;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+  animation: move-background 100s linear infinite;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png")
+    repeat;
 }
 .App .star-container {
-  background: black url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png") repeat;
+  background: black
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png") repeat;
 }
-.App .twinkle, .App .star-container {
+.App .twinkle,
+.App .star-container {
   height: 100%;
   position: absolute;
   top: 0;
@@ -91,7 +94,8 @@
   0% {
     left: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
@@ -99,7 +103,8 @@
   0% {
     left: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
@@ -142,13 +147,14 @@
   height: 2px;
   background: linear-gradient(90deg, transparent, #03e9f4);
   -webkit-animation: btn-anim1 1s linear infinite;
-          animation: btn-anim1 1s linear infinite;
+  animation: btn-anim1 1s linear infinite;
 }
 @-webkit-keyframes btn-anim1 {
   0% {
     left: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
@@ -156,7 +162,8 @@
   0% {
     left: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
@@ -167,15 +174,16 @@
   height: 100%;
   background: linear-gradient(180deg, transparent, #03e9f4);
   -webkit-animation: btn-anim2 1s linear infinite;
-          animation: btn-anim2 1s linear infinite;
+  animation: btn-anim2 1s linear infinite;
   -webkit-animation-delay: 0.25s;
-          animation-delay: 0.25s;
+  animation-delay: 0.25s;
 }
 @-webkit-keyframes btn-anim2 {
   0% {
     top: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     top: 100%;
   }
 }
@@ -183,7 +191,8 @@
   0% {
     top: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     top: 100%;
   }
 }
@@ -194,15 +203,16 @@
   height: 2px;
   background: linear-gradient(270deg, transparent, #03e9f4);
   -webkit-animation: btn-anim3 1s linear infinite;
-          animation: btn-anim3 1s linear infinite;
+  animation: btn-anim3 1s linear infinite;
   -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 @-webkit-keyframes btn-anim3 {
   0% {
     right: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     right: 100%;
   }
 }
@@ -210,7 +220,8 @@
   0% {
     right: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     right: 100%;
   }
 }
@@ -221,15 +232,16 @@
   height: 100%;
   background: linear-gradient(360deg, transparent, #03e9f4);
   -webkit-animation: btn-anim4 1s linear infinite;
-          animation: btn-anim4 1s linear infinite;
+  animation: btn-anim4 1s linear infinite;
   -webkit-animation-delay: 0.75s;
-          animation-delay: 0.75s;
+  animation-delay: 0.75s;
 }
 @-webkit-keyframes btn-anim4 {
   0% {
     bottom: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     bottom: 100%;
   }
 }
@@ -237,7 +249,8 @@
   0% {
     bottom: -100%;
   }
-  50%, 100% {
+  50%,
+  100% {
     bottom: 100%;
   }
 }
@@ -245,7 +258,8 @@
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
 }
 .App .forms-container .game-mode-container form::before {
   content: "";
@@ -313,14 +327,16 @@
 }
 .App .forms-container .game-mode-container .box:before,
 .App .forms-container .game-mode-container .box:after {
-  background: linear-gradient(235deg, #2196f3, #010615, #F00000);
+  background: linear-gradient(235deg, #2196f3, #010615, #f00000);
 }
 .App .forms-container .game-mode-container .box:nth-child(2):before,
-.App .forms-container .game-mode-container .box:nth-child(2):after { /* not supported 😣 */
-  background: linear-gradient(235deg, #2196f3, #010615, #F00000);
+.App .forms-container .game-mode-container .box:nth-child(2):after {
+  /* not supported 😣 */
+  background: linear-gradient(235deg, #2196f3, #010615, #f00000);
 }
 .App .forms-container .game-mode-container .box:nth-child(3):before,
-.App .forms-container .game-mode-container .box:nth-child(3):after { /* not supported 😣 */
+.App .forms-container .game-mode-container .box:nth-child(3):after {
+  /* not supported 😣 */
   background: linear-gradient(235deg, #772aff, #010615, #2196f3);
 }
 .App .forms-container .game-mode-container .box .content {
@@ -369,7 +385,7 @@
   color: rgb(75, 213, 238);
   opacity: 0;
   -webkit-animation: intro 4s ease-out 1s;
-          animation: intro 4s ease-out 1s;
+  animation: intro 4s ease-out 1s;
 }
 .App .container .logo {
   overflow: hidden;
@@ -381,7 +397,7 @@
   margin: -210px 0 0 -350px;
   opacity: 0;
   -webkit-animation: logo 8s linear 5s;
-          animation: logo 8s linear 5s;
+  animation: logo 8s linear 5s;
 }
 .App .container .logo svg {
   width: inherit;
@@ -407,13 +423,13 @@
   position: absolute;
   top: 100%;
   -webkit-animation: prologue 30s linear 8s;
-          animation: prologue 30s linear 8s;
+  animation: prologue 30s linear 8s;
 }
 .App .container .prologue .text p {
   margin: 1.35em 0 1.85em 0;
   line-height: 1.35em;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 @-webkit-keyframes intro {
   0% {
@@ -524,4 +540,4 @@
   to {
     left: 1000px;
   }
-}/*# sourceMappingURL=Room.css.map */
+} /*# sourceMappingURL=Room.css.map */

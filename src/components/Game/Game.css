@@ -42,7 +42,7 @@
   top: 0;
   right: 0;
   background: transparent;
-  color: #D3FFEC;
+  color: #d3ffec;
   font-weight: bold;
   padding: 2px;
 }
@@ -81,9 +81,9 @@
   color: rgb(255, 0, 157);
   opacity: 0;
   -webkit-animation-name: notice;
-          animation-name: notice;
+  animation-name: notice;
   -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  animation-duration: 3s;
 }
 .game-container .card-info {
   pointer-events: none;
@@ -96,7 +96,8 @@
   height: 100%;
   width: 350px;
 }
-.game-container .card-info img[src=""], .game-container .card-info img[src=null] {
+.game-container .card-info img[src=""],
+.game-container .card-info img[src="null"] {
   display: none;
 }
 .game-container .card-info #card {
@@ -141,24 +142,34 @@
   cursor: pointer;
   color: #fff;
 }
-.game-container .board-container .my-stats, .game-container .board-container .enemy-stats {
+.game-container .board-container .my-stats,
+.game-container .board-container .enemy-stats {
   color: #fff;
   text-align: center;
   margin-top: 50px;
 }
-.game-container .board-container .my-stats .health, .game-container .board-container .my-stats .mana, .game-container .board-container .enemy-stats .health, .game-container .board-container .enemy-stats .mana {
+.game-container .board-container .my-stats .health,
+.game-container .board-container .my-stats .mana,
+.game-container .board-container .enemy-stats .health,
+.game-container .board-container .enemy-stats .mana {
   position: relative;
   z-index: 0;
   margin: 5px;
 }
-.game-container .board-container .my-stats .health span, .game-container .board-container .my-stats .mana span, .game-container .board-container .enemy-stats .health span, .game-container .board-container .enemy-stats .mana span {
+.game-container .board-container .my-stats .health span,
+.game-container .board-container .my-stats .mana span,
+.game-container .board-container .enemy-stats .health span,
+.game-container .board-container .enemy-stats .mana span {
   border-radius: 15px;
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
 }
-.game-container .board-container .my-stats .health span:before, .game-container .board-container .my-stats .mana span:before, .game-container .board-container .enemy-stats .health span:before, .game-container .board-container .enemy-stats .mana span:before {
+.game-container .board-container .my-stats .health span:before,
+.game-container .board-container .my-stats .mana span:before,
+.game-container .board-container .enemy-stats .health span:before,
+.game-container .board-container .enemy-stats .mana span:before {
   content: "";
   border-radius: 15px;
   position: absolute;
@@ -171,23 +182,28 @@
   background-repeat: no-repeat;
   mix-blend-mode: overlay;
   z-index: 0;
-  box-shadow: 1px 1px 0 rgba(76, 230, 225, 0.4274509804), 0 0 20px 5px rgba(192, 255, 228, 0.2901960784), inset 2px 2px 0 #D3FFEC;
+  box-shadow: 1px 1px 0 rgba(76, 230, 225, 0.4274509804),
+    0 0 20px 5px rgba(192, 255, 228, 0.2901960784), inset 2px 2px 0 #d3ffec;
 }
-.game-container .board-container .my-stats .health span, .game-container .board-container .enemy-stats .health span {
+.game-container .board-container .my-stats .health span,
+.game-container .board-container .enemy-stats .health span {
   background: #ff4c2c;
   width: 50%;
   height: 100%;
 }
-.game-container .board-container .my-stats .mana span, .game-container .board-container .enemy-stats .mana span {
+.game-container .board-container .my-stats .mana span,
+.game-container .board-container .enemy-stats .mana span {
   background: #4a7375;
   width: 10%;
   height: 100%;
 }
-.game-container .board-container .my-stats .health h3, .game-container .board-container .enemy-stats .health h3 {
+.game-container .board-container .my-stats .health h3,
+.game-container .board-container .enemy-stats .health h3 {
   border-radius: 15px;
   background-color: rgba(255, 76, 44, 0.4941176471);
 }
-.game-container .board-container .my-stats .mana h3, .game-container .board-container .enemy-stats .mana h3 {
+.game-container .board-container .my-stats .mana h3,
+.game-container .board-container .enemy-stats .mana h3 {
   border-radius: 15px;
   background-color: rgba(74, 115, 117, 0.4901960784);
 }
@@ -198,7 +214,8 @@
   height: 100%;
   z-index: 100;
 }
-.game-container .board-container .board .enemy-container, .game-container .board-container .board .my-container {
+.game-container .board-container .board .enemy-container,
+.game-container .board-container .board .my-container {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -206,7 +223,8 @@
   width: 70%;
   border: 2px rgba(121, 121, 121, 0.507) solid;
 }
-.game-container .board-container .board .enemy-container::after, .game-container .board-container .board .my-container::after {
+.game-container .board-container .board .enemy-container::after,
+.game-container .board-container .board .my-container::after {
   content: "";
   position: absolute;
   top: -4px;
@@ -271,4 +289,4 @@
     opacity: 1;
     bottom: 50%;
   }
-}/*# sourceMappingURL=Game.css.map */
+} /*# sourceMappingURL=Game.css.map */

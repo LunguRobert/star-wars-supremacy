@@ -39,7 +39,7 @@
   -o-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
-  color: #35C4F0;
+  color: #35c4f0;
 }
 .loading #load div:nth-child(2) {
   animation-delay: 0.2s;
@@ -143,7 +143,7 @@
 .loading .force_field .sword {
   transform-style: preserve-3d;
   -webkit-animation: rotate 8000ms linear infinite;
-          animation: rotate 8000ms linear infinite;
+  animation: rotate 8000ms linear infinite;
 }
 .loading .force_field .sword .grip {
   position: absolute;
@@ -182,9 +182,11 @@
   transform-style: preserve-3d;
   transform: translateX(0%) translateY(-27px);
   border-radius: 99px 99px 0 0;
-  box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7), -10px -5px 60px 5px rgb(0, 100, 255), -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
+  box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7),
+    -10px -5px 60px 5px rgb(0, 100, 255),
+    -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
   -webkit-animation: mainBeam 10000ms ease-in-out infinite alternate;
-          animation: mainBeam 10000ms ease-in-out infinite alternate;
+  animation: mainBeam 10000ms ease-in-out infinite alternate;
 }
 .loading .force_field .sword .beam::before {
   content: "";
@@ -196,7 +198,7 @@
   border-radius: 99px 99px 0 0;
   box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7);
   -webkit-animation: subBeam 10000ms ease-in-out infinite alternate;
-          animation: subBeam 10000ms ease-in-out infinite alternate;
+  animation: subBeam 10000ms ease-in-out infinite alternate;
 }
 .loading .force_field .sword .beam::after {
   content: "";
@@ -208,7 +210,7 @@
   border-radius: 99px 99px 0 0;
   box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7);
   -webkit-animation: subBeam 10000ms ease-in-out infinite alternate;
-          animation: subBeam 10000ms ease-in-out infinite alternate;
+  animation: subBeam 10000ms ease-in-out infinite alternate;
 }
 @-webkit-keyframes rotate {
   0% {
@@ -229,53 +231,77 @@
 @-webkit-keyframes mainBeam {
   0% {
     background: rgba(150, 150, 255, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7), -10px -5px 60px 5px rgb(0, 100, 255), -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7),
+      -10px -5px 60px 5px rgb(0, 100, 255),
+      -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
   }
   20% {
     background: rgba(150, 150, 255, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7), -10px -5px 60px 5px rgb(0, 100, 255), -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7),
+      -10px -5px 60px 5px rgb(0, 100, 255),
+      -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
   }
   30% {
     background: rgba(150, 255, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7), -10px -5px 60px 5px rgb(0, 255, 100), -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7),
+      -10px -5px 60px 5px rgb(0, 255, 100),
+      -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
   }
   70% {
     background: rgba(150, 255, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7), -10px -5px 60px 5px rgb(0, 255, 100), -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7),
+      -10px -5px 60px 5px rgb(0, 255, 100),
+      -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
   }
   80% {
     background: rgba(250, 150, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7), -10px -5px 60px 5px rgb(255, 0, 50), -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7),
+      -10px -5px 60px 5px rgb(255, 0, 50),
+      -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
   }
   100% {
     background: rgba(250, 150, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7), -10px -5px 60px 5px rgb(255, 0, 50), -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7),
+      -10px -5px 60px 5px rgb(255, 0, 50),
+      -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
   }
 }
 @keyframes mainBeam {
   0% {
     background: rgba(150, 150, 255, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7), -10px -5px 60px 5px rgb(0, 100, 255), -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7),
+      -10px -5px 60px 5px rgb(0, 100, 255),
+      -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
   }
   20% {
     background: rgba(150, 150, 255, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7), -10px -5px 60px 5px rgb(0, 100, 255), -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7),
+      -10px -5px 60px 5px rgb(0, 100, 255),
+      -50px 15px 100px 10px rgba(0, 100, 255, 0.7);
   }
   30% {
     background: rgba(150, 255, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7), -10px -5px 60px 5px rgb(0, 255, 100), -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7),
+      -10px -5px 60px 5px rgb(0, 255, 100),
+      -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
   }
   70% {
     background: rgba(150, 255, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7), -10px -5px 60px 5px rgb(0, 255, 100), -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(0, 255, 100, 0.7),
+      -10px -5px 60px 5px rgb(0, 255, 100),
+      -50px 15px 100px 10px rgba(0, 255, 100, 0.7);
   }
   80% {
     background: rgba(250, 150, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7), -10px -5px 60px 5px rgb(255, 0, 50), -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7),
+      -10px -5px 60px 5px rgb(255, 0, 50),
+      -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
   }
   100% {
     background: rgba(250, 150, 150, 0.8);
-    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7), -10px -5px 60px 5px rgb(255, 0, 50), -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
+    box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.7),
+      -10px -5px 60px 5px rgb(255, 0, 50),
+      -50px 15px 100px 10px rgba(255, 0, 50, 0.7);
   }
 }
 @-webkit-keyframes subBeam {
@@ -329,4 +355,4 @@
     background: rgba(255, 100, 50, 0.8);
     box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.5);
   }
-}/*# sourceMappingURL=Loading.css.map */
+} /*# sourceMappingURL=Loading.css.map */
