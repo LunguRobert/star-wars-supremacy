@@ -510,5 +510,14 @@ export const someCards = {
       description:
         "Galactic Republic: This powerful force card allows you to call upon the strength and unity of the Galactic Republic to increase the stats of all light cards in play by +200. Whether you're facing down a formidable enemy or simply looking to give your light side forces a boost, the Galactic Republic is a valuable ally in any battle. However, it can only be used if you have at least one light card on the field, so plan your strategy carefully and choose your targets wisely. May the force be with you.",
     },
+    {
+      id: 42,
+      name: "special_forcelightning",
+      image: "https://i.imgur.com/xZJrfu1.png",
+      type: "special",
+      mana: 3,
+      description:
+        "Force Lightning: This is a powerful and deadly ability wielded by skilled Force users, particularly those who embrace the dark side. This card allows you to unleash a devastating burst of electricity, dealing 1000 points of damage to your enemy. Be careful, however, as this dark power can have unintended consequences and may ultimately consume you.",
+    },
   ],
 };

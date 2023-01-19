@@ -76,6 +76,9 @@ export default function Game({ client }) {
   const [myMana, setMyMana] = useState(5);
   const [enemyMana, setEnemyMana] = useState(5);
 
+  const myHpClone = useRef();
+  const enemyHpClone = useRef();
+
   const [myHp, setMyHp] = useState(20000);
   const [enemyHp, setEnemyHp] = useState(20000);
 
@@ -86,6 +89,11 @@ export default function Game({ client }) {
       setEnemyHp(-99999);
     }
   }
+
+  useEffect(()=>{
+    myHpClone.current = myHp;
+    enemyHpClone.current = enemyHp;
+  },[myHp,enemyHp])
 
   useEffect(() => {
     if (myHp <= 0 || enemyHp <= 0) {
@@ -453,6 +461,8 @@ export default function Game({ client }) {
           </div>
           <div className="my-container">
             <Mytable
+              myHpClone={myHpClone}
+              enemyHpClone={enemyHpClone}
               whoIsJedi={whoIsJedi}
               isMyFirstTurn={isMyFirstTurn}
               setLocked={setLocked}

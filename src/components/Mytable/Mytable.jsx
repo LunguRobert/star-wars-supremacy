@@ -113,6 +113,8 @@ export default function Mytable(props) {
   const [existKylo, setExistKylo] = useState(false);
   const [existLuke, setExistLuke] = useState(false);
   const {
+    myHpClone,
+    enemyHpClone,
     whoIsJedi,
     isMyFirstTurn,
     setMyMana,
@@ -671,7 +673,7 @@ export default function Mytable(props) {
 
     const extractedCards = extractCards(shuffledArray);
 
-    // const myDeck2 = JSON.parse(JSON.stringify(someCards));
+    // const testCards = JSON.parse(JSON.stringify(someCards.heros));
 
     var myFirstCards = [];
     for (var i = 0; i < 5; i++) {
@@ -800,13 +802,14 @@ export default function Mytable(props) {
       }
       if (dataFromServer.type === "myHp") {
         if (dataFromServer.sign === "minus") {
-          setMyHp(myHp - dataFromServer.diference);
+          setMyHp(myHpClone.current - dataFromServer.diference);
         } else {
-          setEnemyHp(enemyHp + dataFromServer.diference);
+          setEnemyHp(enemyHpClone.current + dataFromServer.diference);
         }
       }
     });
   }, []);
+
 
   // FIGHTING
 
