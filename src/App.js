@@ -1,8 +1,9 @@
 import "./App.css";
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Loading from "./components/Loading/Loading";
 import Game from "./components/Game/Game";
 import Room from "./components/Room/Room";
+import ResolutionChecker from './components/ResolutionChecker/ResolutionChecker';
 import {
   Routes,
   Route,
@@ -14,6 +15,7 @@ import {
 function App({ client }) {
   return (
     <div id="app" className="App">
+      <ResolutionChecker/>
       <Routes>
         <Route path="/" element={<Room client={client} />} />
         <Route
