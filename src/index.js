@@ -4,8 +4,8 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import { w3cwebsocket } from "websocket";
 
-// const client = new w3cwebsocket("wss://supremacy-server.herokuapp.com");
-const client = new w3cwebsocket("ws://127.0.0.1:3001");
+const client = new w3cwebsocket("wss://supremacy-server.herokuapp.com");
+// const client = new w3cwebsocket("ws://127.0.0.1:3001");
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
