@@ -168,7 +168,11 @@ function Room({ client }) {
                   </div>
                 </div>
 
-                <div className="box">
+                <div 
+                  onClick={() => {
+                    setGameMode("brute_force");
+                  }}
+                  className="box">
                   <div className="imgBx">
                     <img
                       src="http://samuel-garcia.site/img/last-jedi.png"
@@ -179,7 +183,7 @@ function Room({ client }) {
                     <h2>
                       STAR WARS
                       <br />
-                      <span>Coming soon...</span>
+                      <span>brute force</span>
                     </h2>
                   </div>
                 </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Mytable.css";
 import { allCards } from "../../scripts/allCards";
 import { someCards } from "../../scripts/someCards";
+import { forceCards } from "../../scripts/forceCards";
 import HandCards from "../HandCards/HandCards";
 import explosion from "../../images/explosion.gif";
 import darthmaul from "../../images/darthmaul.png";
@@ -21,6 +22,7 @@ export default function Mytable(props) {
   const [m5, setM5] = useState("");
   const [m6, setM6] = useState("");
 
+  const cardWithForceCopy = useRef();
   const [mindTricks, setMindTricks] = useState({
     attacker: "",
     defender: "",
@@ -50,7 +52,6 @@ export default function Mytable(props) {
     decreasing: false,
   });
 
-  const iDrewCard = useRef(false);
   const oldNumberOfDark = useRef(0);
   const didMount = useRef({
     m1: false,
@@ -170,6 +171,16 @@ export default function Mytable(props) {
   }, [addToTrash]);
 
   useEffect(() => {
+    if (deck.length > 0 && myTurn.turn === true) {
+      if (handCards.length < 10) {
+        const lastCard = deck[deck.length - 1];
+        setDeck(deck.filter((element, index) => index !== deck.length - 1));
+        setHandCards(handCards.concat(lastCard));
+      }
+    }
+  }, [myTurn]);
+
+  useEffect(() => {
     if (!didMount.current.trash) {
       setTrashCopy(trash);
     } else {
@@ -203,6 +214,8 @@ export default function Mytable(props) {
         forceCards: cardWithForce,
       })
     );
+    cardWithForceCopy.current = cardWithForce;
+    console.log(cardWithForceCopy);
   }, [cardWithForce]);
 
   // DARTH VADER POWER
@@ -524,6 +537,9 @@ export default function Mytable(props) {
   function undoSeduceAndRedeemEffect() {
     if (cardTaken.newPosition !== "") {
       changeCards[cardTaken.newPosition]("");
+      var newArray = JSON.parse(JSON.stringify(cardWithForce));
+      newArray[cardTaken.newPosition] = "";
+      setCardWithForce(newArray);
       switch (cardTaken.newPosition) {
         case 0:
           didMount.current.m1 = true;
@@ -548,6 +564,7 @@ export default function Mytable(props) {
           card: {
             ...getCards[cardTaken.newPosition](),
             seducedOrRedeemed: false,
+            timesAttacked: 0,
           },
           position: cardTaken.position.toString(),
         })
@@ -610,77 +627,95 @@ export default function Mytable(props) {
   // MESSAGES FROM SERVER
 
   useEffect(() => {
-    function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5);
-    }
+    console.log(params);
 
-    const myDeck = JSON.parse(JSON.stringify(allCards));
-    let extendedDeck = [];
-    let index = 0;
-    myDeck.heros.forEach((el) => {
-      if (el.type === "epic_card") {
-        extendedDeck = [...extendedDeck, { ...el, id: index }];
-        index++;
+    if (params.gameMode === "duel_of_fates") {
+      function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
       }
-      if (el.type === "basic_card") {
-        for (let i = 0; i < 3; i++) {
+
+      const myDeck = JSON.parse(JSON.stringify(allCards));
+      let extendedDeck = [];
+      let index = 0;
+      myDeck.heros.forEach((el) => {
+        if (el.type === "epic_card") {
           extendedDeck = [...extendedDeck, { ...el, id: index }];
           index++;
         }
-      }
-      if (el.type === "special") {
-        for (let i = 0; i < 2; i++) {
-          extendedDeck = [...extendedDeck, { ...el, id: index }];
-          index++;
+        if (el.type === "basic_card") {
+          for (let i = 0; i < 3; i++) {
+            extendedDeck = [...extendedDeck, { ...el, id: index }];
+            index++;
+          }
         }
-      }
-    });
-    let shuffledArray = shuffle(extendedDeck);
-
-    function extractCards(cards) {
-      let newCards = [...cards];
-      const extractedCards = [];
-      const epicCounts = {};
-      const basicCounts = {};
-      const specialCounts = {};
-
-      while (extractedCards.length < 50) {
-        const indexOfRandom = Math.floor(Math.random() * newCards.length);
-        const card = newCards[indexOfRandom];
-        if (card.type === "epic_card") {
-          if (epicCounts[card.id] >= 1) {
-            continue;
+        if (el.type === "special") {
+          for (let i = 0; i < 2; i++) {
+            extendedDeck = [...extendedDeck, { ...el, id: index }];
+            index++;
           }
-          epicCounts[card.id] = (epicCounts[card.id] || 0) + 1;
-        } else if (card.type === "basic_card") {
-          if (basicCounts[card.id] >= 3) {
-            continue;
-          }
-          basicCounts[card.id] = (basicCounts[card.id] || 0) + 1;
-        } else if (card.type === "special") {
-          if (specialCounts[card.id] >= 2) {
-            continue;
-          }
-          specialCounts[card.id] = (specialCounts[card.id] || 0) + 1;
         }
-        let indexOfRemoved = newCards.findIndex((obj) => obj.id === card.id);
-        if (indexOfRemoved !== -1) newCards.splice(indexOfRemoved, 1);
-        extractedCards.push({ ...card, id: extractedCards.length });
+      });
+      let shuffledArray = shuffle(extendedDeck);
+
+      function extractCards(cards) {
+        let newCards = [...cards];
+        const extractedCards = [];
+        const epicCounts = {};
+        const basicCounts = {};
+        const specialCounts = {};
+
+        while (extractedCards.length < 50) {
+          const indexOfRandom = Math.floor(Math.random() * newCards.length);
+          const card = newCards[indexOfRandom];
+          if (card.type === "epic_card") {
+            if (epicCounts[card.id] >= 1) {
+              continue;
+            }
+            epicCounts[card.id] = (epicCounts[card.id] || 0) + 1;
+          } else if (card.type === "basic_card") {
+            if (basicCounts[card.id] >= 3) {
+              continue;
+            }
+            basicCounts[card.id] = (basicCounts[card.id] || 0) + 1;
+          } else if (card.type === "special") {
+            if (specialCounts[card.id] >= 2) {
+              continue;
+            }
+            specialCounts[card.id] = (specialCounts[card.id] || 0) + 1;
+          }
+          let indexOfRemoved = newCards.findIndex((obj) => obj.id === card.id);
+          if (indexOfRemoved !== -1) newCards.splice(indexOfRemoved, 1);
+          extractedCards.push({ ...card, id: extractedCards.length });
+        }
+
+        return extractedCards;
       }
 
-      return extractedCards;
+      const extractedCards = extractCards(shuffledArray);
+
+      // const testCards = JSON.parse(JSON.stringify(someCards.heros));
+
+      var myFirstCards = [];
+      for (var i = 0; i < 5; i++) {
+        myFirstCards.push(extractedCards.pop());
+      }
+      setDeck(extractedCards);
+      setHandCards(myFirstCards);
+    } else {
+      function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
+      }
+
+      const myDeck = JSON.parse(JSON.stringify(forceCards));
+      let shuffledArray = shuffle(myDeck.heros);
+
+      var myFirstCards = [];
+      for (var i = 0; i < 5; i++) {
+        myFirstCards.push(shuffledArray.pop());
+      }
+      setDeck(shuffledArray);
+      setHandCards(myFirstCards);
     }
-
-    const extractedCards = extractCards(shuffledArray);
-
-    // const testCards = JSON.parse(JSON.stringify(someCards.heros));
-
-    var myFirstCards = [];
-    for (var i = 0; i < 5; i++) {
-      myFirstCards.push(extractedCards.pop());
-    }
-    setDeck(extractedCards);
-    setHandCards(myFirstCards);
 
     client.addEventListener("message", function (message) {
       const dataFromServer = JSON.parse(message.data);
@@ -741,6 +776,9 @@ export default function Mytable(props) {
       }
       if (dataFromServer.type === "card_taken") {
         changeCards[dataFromServer.position - 1]("");
+        var newArray = JSON.parse(JSON.stringify(cardWithForceCopy.current));
+        newArray[dataFromServer.position - 1] = "";
+        setCardWithForce(newArray);
         switch (dataFromServer.position - 1) {
           case 0:
             didMount.current.m1 = true;
@@ -809,7 +847,6 @@ export default function Mytable(props) {
       }
     });
   }, []);
-
 
   // FIGHTING
 
@@ -1177,6 +1214,8 @@ export default function Mytable(props) {
       });
     }
   }
+
+  // PREFIGHTING
 
   useEffect(() => {
     const filteredArray = enemyForceCard.filter((value) => value !== "");
@@ -1700,7 +1739,7 @@ export default function Mytable(props) {
         }
         break;
 
-      case "special_reedem":
+      case "special_redeem":
         if (
           (isLightInMyTeam && isEnemyOnTable) ||
           (isWinduOnTable && isEnemyOnTable)
@@ -1710,6 +1749,7 @@ export default function Mytable(props) {
               ...cardTaken,
               active: true,
             });
+            changeCards[position]("");
           }, 1500);
         } else {
           setTimeout(() => {
@@ -3441,18 +3481,6 @@ export default function Mytable(props) {
         <div className="deck">
           <span className="cards-counter">{deck.length}</span>
           <img
-            onClick={() => {
-              if (deck.length > 0 && iDrewCard.current) {
-                if (handCards.length < 10) {
-                  const lastCard = deck[deck.length - 1];
-                  setDeck(
-                    deck.filter((element, index) => index !== deck.length - 1)
-                  );
-                  setHandCards(handCards.concat(lastCard));
-                  iDrewCard.current = false;
-                }
-              }
-            }}
             id="deck"
             draggable="false"
             src={`${
@@ -3465,8 +3493,8 @@ export default function Mytable(props) {
         </div>
         <div
           onClick={(event) => {
-            event.nativeEvent.path[6].children[4].style.display = "block";
             console.log(event);
+            event.nativeEvent.path[6].children[4].style.display = "block";
           }}
           className="trash"
         >
@@ -3591,7 +3619,6 @@ export default function Mytable(props) {
                 if (noSummon) {
                   setNoSummon(false);
                 }
-                iDrewCard.current = true;
               }
             }}
             className="btn"

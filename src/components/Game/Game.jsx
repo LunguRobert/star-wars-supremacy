@@ -18,6 +18,7 @@ export default function Game({ client }) {
   const [myTurn, setMyTurn] = useState({
     turn: false,
     round: 0,
+    isMyFirstTurn : false,
   });
   const [enemyTurn, setEnemyTurn] = useState({
     turn: false,
@@ -115,6 +116,14 @@ export default function Game({ client }) {
   }, []);
 
   useEffect(() => {
+    if(params.gameMode === "duel_of_fates"){
+      setMyMana(5);
+      prevMana.current =  5;
+    }else {
+      setMyMana(9);
+      prevMana.current = 9;
+    }
+
     client.send(JSON.stringify({ type: "get_data" }));
     client.onmessage = (message) => {
       const dataFromServer = JSON.parse(message.data);
@@ -172,6 +181,9 @@ export default function Game({ client }) {
       if (dataFromServer.type === "enemy_disconnected") {
         enemyDisconnected();
       }
+      if (dataFromServer.type === "your_first_turn") {
+        isMyFirstTurn.current = dataFromServer.isMyFirstTurn;
+      }
     };
   }, []);
 
@@ -189,7 +201,7 @@ export default function Game({ client }) {
           JSON.stringify({
             type: "my_turn",
             adress: enemyId,
-            turn: { turn: true, round: 1 },
+            turn: { turn: true, round: 1},
           })
         );
       } else {
@@ -198,7 +210,14 @@ export default function Game({ client }) {
           JSON.stringify({
             type: "your_turn",
             adress: enemyId,
-            turn: { turn: true, round: 1 },
+            turn: { turn: true, round: 1},
+          })
+        );
+        client.send(
+          JSON.stringify({
+            type: "your_first_turn",
+            adress: enemyId,
+            isMyFirstTurn: true,
           })
         );
         setEnemyTurn({
