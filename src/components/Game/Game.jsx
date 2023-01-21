@@ -24,7 +24,7 @@ export default function Game({ client }) {
     turn: false,
     round: 0,
   });
-
+  const myRef = useRef(null);
   const [reborn, setReborn] = useState({
     active: false,
     reborn: false,
@@ -382,12 +382,13 @@ export default function Game({ client }) {
         <p>{img.description}</p>
       </div>
       <div
+        ref={myRef}
         className="trash-container"
         style={{ display: `${reborn.active ? "block" : "none"}` }}
       >
         <button
-          onClick={(event) => {
-            event.nativeEvent.path[1].style.display = "none";
+          onClick={() => {
+            myRef.current.style.display = "none";
           }}
         >
           Exit
@@ -480,6 +481,7 @@ export default function Game({ client }) {
           </div>
           <div className="my-container">
             <Mytable
+              myRef={myRef}
               myHpClone={myHpClone}
               enemyHpClone={enemyHpClone}
               whoIsJedi={whoIsJedi}

@@ -19,9 +19,7 @@ function Room({ client }) {
   const navigate = useNavigate();
 
   function stayAwake() {
-    console.log(client.readyState);
     client.send(JSON.stringify({ type: "stay_awake" }));
-    console.log("stay awake");
   }
 
   useEffect(() => {

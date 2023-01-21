@@ -105,7 +105,7 @@ export const someCards = {
       name: "windu",
       attack: 3000,
       defence: 3000,
-      image: "https://i.imgur.com/33ebuKF.png",
+      image: "https://i.imgur.com/ofAvDHC.png",
       type: "epic_card",
       mana: 6,
       side: "no_side",

@@ -114,6 +114,7 @@ export default function Mytable(props) {
   const [existKylo, setExistKylo] = useState(false);
   const [existLuke, setExistLuke] = useState(false);
   const {
+    myRef,
     myHpClone,
     enemyHpClone,
     whoIsJedi,
@@ -1250,7 +1251,7 @@ export default function Mytable(props) {
         }, 2000);
       }
     }
-    if (attacker) {
+    if (attacker && filteredArray.length !== 0) {
       if (attacker.fightCard.name === "rey") {
         setReyAttacker(true);
       }
@@ -3493,8 +3494,7 @@ export default function Mytable(props) {
         </div>
         <div
           onClick={(event) => {
-            console.log(event);
-            event.nativeEvent.path[6].children[4].style.display = "block";
+            myRef.current.style.display = "block";
           }}
           className="trash"
         >
