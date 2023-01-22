@@ -65,6 +65,7 @@ export default function Game({ client }) {
     active: false,
     card: "",
     position: "",
+    side: "",
     newPosition: "",
   });
   const [cancelAttack, setCancelAttack] = useState({

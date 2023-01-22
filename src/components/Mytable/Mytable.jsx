@@ -674,12 +674,12 @@ export default function Mytable(props) {
             }
             epicCounts[card.id] = (epicCounts[card.id] || 0) + 1;
           } else if (card.type === "basic_card") {
-            if (basicCounts[card.id] >= 3) {
+            if (basicCounts[card.id] >= 2) {
               continue;
             }
             basicCounts[card.id] = (basicCounts[card.id] || 0) + 1;
           } else if (card.type === "special") {
-            if (specialCounts[card.id] >= 2) {
+            if (specialCounts[card.id] >= 1) {
               continue;
             }
             specialCounts[card.id] = (specialCounts[card.id] || 0) + 1;
@@ -692,15 +692,15 @@ export default function Mytable(props) {
         return extractedCards;
       }
 
-      const extractedCards = extractCards(shuffledArray);
+      // const extractedCards = extractCards(shuffledArray);
 
-      // const testCards = JSON.parse(JSON.stringify(someCards.heros));
+      const testCards = JSON.parse(JSON.stringify(someCards.heros));
 
       var myFirstCards = [];
       for (var i = 0; i < 5; i++) {
-        myFirstCards.push(extractedCards.pop());
+        myFirstCards.push(testCards.pop());
       }
-      setDeck(extractedCards);
+      setDeck(testCards);
       setHandCards(myFirstCards);
     } else {
       function shuffle(array) {
@@ -1729,6 +1729,7 @@ export default function Mytable(props) {
           setTimeout(() => {
             setCardTaken({
               ...cardTaken,
+              side: "dark",
               active: true,
             });
             changeCards[position]("");
@@ -1748,6 +1749,7 @@ export default function Mytable(props) {
           setTimeout(() => {
             setCardTaken({
               ...cardTaken,
+              side: "light",
               active: true,
             });
             changeCards[position]("");
@@ -1890,7 +1892,7 @@ export default function Mytable(props) {
 
       case "special_forcehealing":
         setTimeout(() => {
-          setMyHp(enemyHp + 1000);
+          setMyHp(myHp + 1000);
           client.send(
             JSON.stringify({
               type: "myHp",

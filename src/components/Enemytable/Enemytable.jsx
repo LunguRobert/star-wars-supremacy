@@ -684,6 +684,7 @@ function Enemytable(props) {
       } else if (cardTaken.active) {
         setCardTaken({
           active: false,
+          side: "",
           card: { ...m, seducedOrRedeemed: true },
           position: position,
         });
@@ -813,7 +814,7 @@ function Enemytable(props) {
           ) : (
             ""
           )}
-          {m1 && cardTaken.active ? <img src={pulse} className="sword" /> : ""}
+          {m1 && cardTaken.active && cardTaken.side === m1.side ? <img src={pulse} className="sword" /> : ""}
           {m1.side == "dark" && cancelAttack.active ? (
             <img src={pulse} className="sword" />
           ) : (
@@ -935,7 +936,7 @@ function Enemytable(props) {
           ) : (
             ""
           )}
-          {m2 && cardTaken.active ? <img src={pulse} className="sword" /> : ""}
+          {m2 && cardTaken.active && cardTaken.side === m2.side ? <img src={pulse} className="sword" /> : ""}
           {m2.side == "dark" && cancelAttack.active ? (
             <img src={pulse} className="sword" />
           ) : (
@@ -1057,7 +1058,7 @@ function Enemytable(props) {
           ) : (
             ""
           )}
-          {m3 && cardTaken.active ? <img src={pulse} className="sword" /> : ""}
+          {m3 && cardTaken.active && cardTaken.side === m3.side ? <img src={pulse} className="sword" /> : ""}
           {m3.side == "dark" && cancelAttack.active ? (
             <img src={pulse} className="sword" />
           ) : (
@@ -1179,7 +1180,7 @@ function Enemytable(props) {
           ) : (
             ""
           )}
-          {m4 && cardTaken.active ? <img src={pulse} className="sword" /> : ""}
+          {m4 && cardTaken.active && cardTaken.side === m4.side ? <img src={pulse} className="sword" /> : ""}
           {m4.side == "dark" && cancelAttack.active ? (
             <img src={pulse} className="sword" />
           ) : (
@@ -1301,7 +1302,7 @@ function Enemytable(props) {
           ) : (
             ""
           )}
-          {m5 && cardTaken.active ? <img src={pulse} className="sword" /> : ""}
+          {m5 && cardTaken.active && cardTaken.side === m5.side ? <img src={pulse} className="sword" /> : ""}
           {m5.side == "dark" && cancelAttack.active ? (
             <img src={pulse} className="sword" />
           ) : (
