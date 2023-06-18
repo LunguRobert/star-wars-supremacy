@@ -153,7 +153,7 @@ function Room({ client }) {
                 >
                   <div className="imgBx">
                     <img
-                      src="http://samuel-garcia.site/img/the-force.png"
+                      src="https://wallpapers.com/images/featured/plzcoaffexgf4h81.jpg"
                       alt="STAR-WARS-THE-FORCE"
                     />
                   </div>
@@ -173,7 +173,7 @@ function Room({ client }) {
                   className="box">
                   <div className="imgBx">
                     <img
-                      src="http://samuel-garcia.site/img/last-jedi.png"
+                      src="https://w0.peakpx.com/wallpaper/29/611/HD-wallpaper-star-wars-warrior-lightsaber-sith-star-wars.jpg"
                       alt="Last-Jedi"
                     />
                   </div>
@@ -189,7 +189,7 @@ function Room({ client }) {
                 <div className="box">
                   <div className="imgBx">
                     <img
-                      src="http://samuel-garcia.site/img/the-rise.png"
+                      src="https://cdn.wallpapersafari.com/86/83/HCb1wg.jpg"
                       alt="STAR-WARS-The-Skywalker"
                     />
                   </div>
